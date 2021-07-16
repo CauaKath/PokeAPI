@@ -1,18 +1,29 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+
+interface FormProps {
+  hasError: boolean;
+};
+
+export const Align = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const Title = styled.h1`
   color: #4F99DD;
   font-size: 40px;
-  max-width: 500px;
+  width: 700px;
   line-heigt: 56px;
 
-  margin-top: 15px;
+  margin-top: 25px;
 `;
 
-export const SearchBar = styled.form`
-  margin-top: 40px;
-  max-width: 700px;
+export const Form = styled.form<FormProps>`
+  margin-top: 50px;
+  width: 700px;
 
   display: flex;
 
@@ -23,6 +34,12 @@ export const SearchBar = styled.form`
     border: 0;
     border-radius: 5px 0 0 5px;
     color: #3a3a3a;
+
+    border: 2px solid #fff;
+    border-right: 0;
+    ${props => props.hasError && css`
+      border-color: #c53030;
+    `}
 
     &::placeholder {
       color: #a8a8b3;
@@ -46,18 +63,23 @@ export const SearchBar = styled.form`
   }
 `;
 
+export const Error = styled.span`
+  width: 700px;
+  color: #c53030;
+  margin-top: 8px;
+`;
+
 export const Card = styled.div`
-  margin-top: 40px;
-  max-width: 700px;
+  margin-top: 50px;
 
   border-radius: 5px;
   width: 100%;
-  padding: 50px;
+  padding: 45px;
   display: flex;
   flex-direction: row;
 `;
 
-export const DivLeft = styled.div`
+export const DivImg = styled.div`
   width: 250px
   height: 250px;
   margin-right: 48px;
@@ -93,7 +115,7 @@ export const Types = styled.div`
   }
 `;
 
-export const DivRight = styled.div`
+export const DivInfo = styled.div`
   width: 300px;
   height: 220px;
   background: #4F99DD;
@@ -125,6 +147,41 @@ export const DivRight = styled.div`
         & + li {
           margin-top: 5px;
         }
+      }
+    }
+  }
+`;
+
+export const DivStats = styled.div`
+  width: 350px;
+  height: 220px;
+  background: #E82F2F;
+  border-radius: 5px;
+  padding: 20px;
+  margin-left: 20px;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: row;
+
+      p {
+        width: 35px;
+        font-weight: bold;
+
+        &:first-child {
+          width: 70px;
+        }
+      }
+
+      div {
+        border-radius: 5px;
+      }
+
+      & + li {
+        margin-top: 13px;
       }
     }
   }
